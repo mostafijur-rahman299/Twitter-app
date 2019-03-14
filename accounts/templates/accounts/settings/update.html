@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{ block.super }}-username or email update{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12 col-md-3"></div>
+    <div class="col-12 col-md-4">
+      <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">Update Email or Username!</h4>
+        <form class="" action="{% url 'accounts:update' username=request.user %}" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" class='btn btn-danger' name="" value="submit">
+        </form>
+      </div>
+    </div>
+    <div class="col-12 col-md-3"></div>
+  </div>
+</div>
+
+{% endblock content %}

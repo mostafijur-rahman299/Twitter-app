@@ -1,0 +1,16 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {% if profile.profile_pic %}
+        <img id="myImg" src="{{ profile.profile_pic.url }}" alt="Snow" style="width:100%;max-width:30px; height:25px">
+      {% else %}
+        Account
+      {% endif %}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a style='padding:6px;'class="dropdown-item" href="/accounts/detail/{{ request.user }}">Profile</a>
+    <a class="dropdown-item" style='padding:6px;' href="{% url 'accounts:settings' %}">Settings</a>
+    <div class="dropdown-divider"></div>
+      <a class="nav-link" href="{% url 'accounts:user_logout' %}">Logout</a>
+    </div>
+  </li>
+</li>

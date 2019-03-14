@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Tweet-List{% endblock title %}
+
+{% block script %}
+<script>
+  $(document).ready(function(){
+      loadTweetContainer(".tweet-container")
+  })
+</script>
+{% endblock script %}
+
+{% block content %}
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-8">
+        <div class="tweet-container" data-url="/api/tweets/tags/{{ obj.tag }}/">
+          <h3>Tweets</h3>
+          <hr>
+        </div>
+        <a id='loadmore'href="">Load More</a><br>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

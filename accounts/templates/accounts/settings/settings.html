@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ block.super }}-settings{% endblock title %}
+{% block content %}
+  <div class="container mt-2">
+    <div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Update Account!</h4>
+  <p>Do you want to update <b>Email or Username</b>? click here.<a class='btn btn-link' href="{% url 'accounts:update' username=request.user %}">Update</a></p>
+  <hr>
+  <p class="mb-0">Do you want to change <b>Password</b>? click here.<a class='btn btn-link'href="/account/password/change">Update</a></p>
+</div>
+  </div>
+{% endblock content %}

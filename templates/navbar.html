@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light py-1 bg-success">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link navbar-brand" href="{% url "tweets:tweet_list" %}"><i class="fas fa-house-damage"></i>Home <span class="sr-only">(current)</span></a>
+    {% else %}
+      <li class="nav-item">
+        <a class="nav-link btn alert-success btn-sm" role="alert" href="{% url 'accounts:user_login' %}">Login</a>
+      </li>
+    {% endif %}
+    </ul>
+    {% if request.user.is_authenticated %}
+    <ul class='navbar-nav'>
+      {% include 'tweets/dropdown.html' %}
+    </ul>
+    <form id="search-form"class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
+      <input class="form-control mr-sm-2" type="search" name='q' placeholder="Search" aria-label="Search" value='{{ request.GET.q }}'>
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    {% endif %}
+
+  </div>
+</nav>
