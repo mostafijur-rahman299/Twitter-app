@@ -104,9 +104,9 @@ class TweetUpdateView(LoginRequiredMixin,UpdateView):
     template_name = 'tweets/tweet_create.html'
     form_class = TweetForm
 
-    def form_valid(form):
+    def form_valid(self, form):
         if form.instance.user == self.request.user:
-            return super(TweetUpdateView,self).form_valid(form)
+            return super(TweetUpdateView, self).form_valid(form)
         else:
             form.errors[forms.forms.NON_FIELD_ERRORS]=ErrorList(['You are not instance user:)'])
             return self.form_invalid(form)
